@@ -24,13 +24,13 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 // return redirect(RouteServiceProvider::HOME);
-                if (auth()->user()->user_role == "administrator") {
+                if (auth()->user()->akses == "administrator") {
                     $notification1 = array(
                         'message' => 'Success, you are logged in as administrator!',
                         'alert-type' => 'success'
                     );
                     return redirect()->route('administrator.dashboard')->with($notification1);;
-                }elseif (auth()->user()->user_role == "user") {
+                }elseif (auth()->user()->akses == "user") {
                     $notification2 = array(
                         'message' => 'Success, you are logged in as user!',
                         'alert-type' => 'success'
